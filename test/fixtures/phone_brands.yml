@@ -3,9 +3,7 @@
 one:
   external_id: 1
   name: MyString
-  brand_id: 1
 
 two:
   external_id: 1
   name: MyString
-  brand_id: 1

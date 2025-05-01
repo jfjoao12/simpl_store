@@ -1,6 +1,6 @@
 require "test_helper"
 
-class PhoneTest < ActiveSupport::TestCase
+class BrandTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
