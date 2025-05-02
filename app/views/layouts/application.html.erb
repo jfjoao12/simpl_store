@@ -25,6 +25,28 @@
   </head>
 
   <body>
+
+    <header>
+        <nav>
+        <ul>
+          <li>
+            Cart
+            <% if cart.present? %>
+              <sup> <%= cart.size %> </sup>
+              <ul>
+                <% cart.each do |product| %>
+                  <li>
+                    <%= button_to '❌', cart_path(product), method: :delete %> <%= product.name %>
+                  </li>
+                <% end %>
+              </ul>
+            <%end%>
+          </li>
+        </ul>
+      </nav>
+      <h1><%= link_to "Buy Our Stuff", root_path %></h1>
+      <h3>Make Us Rich</h3>
+    </header>
     <%= render "layouts/header" %>
     <%= yield %>
     <%= render "layouts/footer" %>
