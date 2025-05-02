@@ -7,8 +7,9 @@ class HomeController < ApplicationController
 
     @new_arrivals = Device
                       .joins(:type, :phone)
-                      .where(types: { name: "Normal" })
-                      .includes(:phone)
+                      .where("devices.created_at >= ?", 10.hours.ago)
+                      .order("devices.created_at DESC")
+
 
     @featured = Device
                   .joins(:type, :phone)

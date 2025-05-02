@@ -24,19 +24,29 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <% flash.each do |kind, msg| %>
-    <div class="flash <%= kind %>"><%= msg %></div>
-  <% end %>
+
   <body class="is-centered">
 
     <%= render "layouts/header" %>
+          <% flash.each do |kind, msg| %>
+          <div class="container-mine-vert">
+            <div class="centered flash <%= kind %>" style="padding: 20px";>
+              <%= msg %></div>
+            <% end %>
+          </div>
+
     <%= yield %>
-    <a href="<%= cart_path %>" class="cart-button">
-      🛒
-      <% if session[:cart].present? %>
-        <sup><%= session[:cart].size %></sup>
-      <% end %>
-    </a>
+
+    <div>
+
+        <a href="<%= cart_path %>" class="cart-button">
+        🛒
+        <% if session[:cart].present? %>
+          <sup><%= session[:cart].size %></sup>
+        <% end %>
+      </a>
+    </div>
+
     <%= render "layouts/footer" %>
   </body>
 </html>
