@@ -6,11 +6,13 @@ class Phone < ApplicationRecord
   serialize :network_3g,       Array
   serialize :network_4g,       Array
   serialize :network_5g,       Array
+
   serialize :colors,           Array
   serialize :models,           Array
-  serialize :cameras_main_camera_specs, Array
-  serialize :cameras_main_features,     Array
-  serialize :cameras_main_video,        Array
+
+  serialize :cameras_main_camera_specs,   Array
+  serialize :cameras_main_features,       Array
+  serialize :cameras_main_video,          Array
   serialize :cameras_selfie_camera_specs, Array
   serialize :cameras_selfie_features,     Array
   serialize :cameras_selfie_video,        Array
