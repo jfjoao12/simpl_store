@@ -5,16 +5,17 @@ Rails.application.routes.draw do
   get "device/:id", to: "device#show", as: :device
 
   resources :devices, only: [ :show ]
-  resource :cart, only: [ :show ]
 
   get "up" => "rails/health#show", as: :rails_health_check
 
 
-  # add a device to cart
-  post   "/cart/:id",   to: "carts#create",  as: :add_to_cart
+  resource :cart, only: [ :show ], path: "/cart"
 
-  # remove a device from cart
-  delete "/cart/:id",   to: "carts#destroy", as: :remove_from_cart
+  # “Add a device to the cart”
+  post   "/cart/:id", to: "carts#create",  as: :add_to_cart
+
+  # “Remove a device from the cart”
+  delete "/cart/:id", to: "carts#destroy", as: :remove_from_cart
 
   root "home#index"
 end

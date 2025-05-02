@@ -250,7 +250,8 @@ a {
 /* Card Link */
 .profile-link {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 0.75rem;
 }
 

@@ -7,7 +7,7 @@
     <div class="character-grid">
 
       <% @featured.sample(6).each do |item| %>
-        <div class="character-card-main">
+        <div class="character-card">
 
           <div class="character-info">
             <h2 class="character-name-h center">
@@ -21,21 +21,13 @@
           </div>
           <div class="profile-link">
             <%= link_to "View", device_path(item), class: "button is-link" %>
-          </div>
 
-          <div class="profile-link">
-            <%= button_to "Add to Cart",
-                  add_to_cart_path(item),
-                  method: :post,
-                  class: "button is-link" %>
+            <% if session[:cart]&.include?(item.id) %>
+              <%= button_to "Remove", remove_from_cart_path(item), method: :delete, class: "button is-link" %>
+            <% else %>
+              <%= button_to "Add to Cart", add_to_cart_path(item), method: :post, class: "button is-link" %>
+            <% end %>
           </div>
-
-          <% if session[:cart]&.include?(item.id) %>
-          <%= button_to "Remove from Cart",
-                remove_from_cart_path(item),
-                method: :delete,
-                class: "button is-danger" %>
-          <% end %>
         </div>
       <% end %>
 
@@ -64,11 +56,17 @@
                 <div class="profile-link">
                 </div>
           </div>
+            <div class="profile-link">
+            <%= link_to "View", device_path(item), class: "button is-link" %>
+
+            <% if session[:cart]&.include?(item.id) %>
+              <%= button_to "Remove", remove_from_cart_path(item), method: :delete, class: "button is-link" %>
+            <% else %>
+              <%= button_to "Add to Cart", add_to_cart_path(item), method: :post, class: "button is-link" %>
+            <% end %>
+          </div>
         </div>
       <% end %>
-    </div>
-
-    <div class="profile-link">
     </div>
   </div>
 </section>
@@ -92,11 +90,18 @@
                 <div class="profile-link">
                 </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+          <div class="profile-link">
+            <%= link_to "View", device_path(item), class: "button is-link" %>
 
-    <div class="profile-link">
+            <% if session[:cart]&.include?(item.id) %>
+              <%= button_to "Remove", remove_from_cart_path(item), method: :delete, class: "button is-link" %>
+            <% else %>
+              <%= button_to "Add to Cart", add_to_cart_path(item), method: :post, class: "button is-link" %>
+            <% end %>
+          </div>
+        </div>
+
+      <% end %>
     </div>
   </div>
 </section>

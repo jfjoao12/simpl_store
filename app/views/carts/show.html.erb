@@ -1,0 +1,38 @@
+<section class="container-mine-vert">
+  <h1 class="title">Your Cart</h1>
+
+  <% if @items.empty? %>
+    <div class="character-card">
+      <div class="character-info">
+        <p>Your cart is empty.</p>
+        <%= link_to "Continue Shopping", root_path, class: "button is-link" %>
+      </div>
+    </div>
+  <% else %>
+    <div class="character-grid">
+      <% @items.each do |device| %>
+        <div class="character-card">
+          <div class="character-info">
+            <h2 class="character-name-h center">
+              <%= device.phone.name %>
+            </h2>
+            <p><strong>Storage:</strong> <%= device.storage %></p>
+            <p><strong>Color:</strong>   <%= device.color   %></p>
+            <p><strong>Price:</strong>   $<%= number_with_precision(device.price, precision: 2) %></p>
+
+            <div class="profile-link">
+              <%= link_to "View Details",
+                          device_path(device),
+                          class: "button is-link" %>
+              <%= button_to "Remove",
+                            remove_from_cart_path(device),
+                            method: :delete,
+                            class: "button is-link",
+                            form: { style: "display:inline" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</section>
