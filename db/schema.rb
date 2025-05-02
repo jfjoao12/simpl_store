@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_02_022647) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_02_023440) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -105,6 +105,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_02_022647) do
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_phones_on_brand_id"
     t.index ["external_id"], name: "index_phones_on_external_id", unique: true
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "phones", "brands"
