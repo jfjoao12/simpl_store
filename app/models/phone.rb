@@ -1,19 +1,19 @@
 class Phone < ApplicationRecord
   belongs_to :brand
 
-  serialize :battery_charging, coder: JSON, type: Array
-  serialize :network_2g,       coder: JSON, type: Array
-  serialize :network_3g,       coder: JSON, type: Array
-  serialize :network_4g,       coder: JSON, type: Array
-  serialize :network_5g,       coder: JSON, type: Array
+  serialize :battery_charging, coder: YAML, type: Array
+  serialize :network_2g,       coder: YAML, type: Array
+  serialize :network_3g,       coder: YAML, type: Array
+  serialize :network_4g,       coder: YAML, type: Array
+  serialize :network_5g,       coder: YAML, type: Array
 
-  serialize :colors,           coder: JSON, type: Array
-  serialize :models,           coder: JSON, type: Array
+  serialize :colors,           coder: YAML, type: Array
+  serialize :models,           coder: YAML, type: Array
 
-  serialize :cameras_main_camera_specs,   coder: JSON, type: Array
-  serialize :cameras_main_features,       coder: JSON, type: Array
-  serialize :cameras_main_video,          coder: JSON, type: Array
-  serialize :cameras_selfie_camera_specs, coder: JSON, type: Array
-  serialize :cameras_selfie_features,     coder: JSON, type: Array
-  serialize :cameras_selfie_video,        coder: JSON, type: Array
+  serialize :cameras_main_camera_specs,   coder: YAML, type: Array
+  serialize :cameras_main_features,       coder: YAML, type: Array
+  serialize :cameras_main_video,          coder: YAML, type: Array
+  serialize :cameras_selfie_camera_specs, coder: YAML, type: Array
+  serialize :cameras_selfie_features,     coder: YAML, type: Array
+  serialize :cameras_selfie_video,        coder: YAML, type: Array
 end
