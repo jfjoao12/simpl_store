@@ -1,18 +1,28 @@
 <!-- app/views/devices/show.html.erb -->
 
-  <div class="center">
-    <h2 class="title"><%= @device.phone.name %></h2>
+<div class="center">
+  <h2 class="title"><%= @device.phone.name %></h2>
 
     <%# — Basic Device Details always show, since storage/color/price are required %>
-    <div class="character-card">
-      <div class="character-info">
-        <p><strong>Brand:</strong> <%= @device.phone.brand_name %></p>
-        <p><strong>Storage:</strong> <%= @device.storage %></p>
-        <p><strong>Color:</strong> <%= @device.color %></p>
-        <p><strong>Price:</strong> <%= number_with_precision(@device.price, precision: 2) %></p>
-      </div>
+  <div class="character-card">
+    <div class="character-info">
+      <p><strong>Brand:</strong>   <%= @device.phone.brand_name %></p>
+      <p><strong>Storage:</strong> <%= @device.storage %></p>
+      <p><strong>Color:</strong>   <%= @device.color %></p>
+      <p><strong>Price:</strong>    <%= number_with_precision(@device.price, precision: 2) %></p>
+      <p><strong>Category:</strong> <%= @device.category.name %></p>
     </div>
   </div>
+  <div class="profile-link">
+    <%= link_to "View", device_path(@device), class: "button is-link" %>
+
+    <% if session[:cart]&.include?(@device.id) %>
+      <%= button_to "Remove", remove_from_cart_path(@device), method: :delete, class: "button is-link" %>
+    <% else %>
+      <%= button_to "Add to Cart", add_to_cart_path(@device), method: :post, class: "button is-link" %>
+    <% end %>
+  </div>
+</div>
 
 
 <section class="container-mine-vert">
@@ -255,7 +265,7 @@
           <p><strong>Features:</strong> <%= @device.phone.cameras_main_features.join(", ") %></p>
         <% end %>
         <% if @device.phone.cameras_main_video.any? %>
-          <p><strong>Video:</strong> <%= @device.phone.cameras_main_video.join(", ") %></p>
+          <p><strong>Video:</strong> <%= @device.phone.cameras_main_video.join(", ") %></p>\
         <% end %>
       </div>
     </div>

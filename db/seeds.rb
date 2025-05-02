@@ -152,6 +152,7 @@ def random_devices(count: 100)
   phone_ids = Phone.pluck(:id)
   brand_ids = Brand.pluck(:id)
   type_ids  = Type.pluck(:id)
+  categories_ids = Category.pluck(:id)
 
   colors    = %w[Black Red Green White Yellow]
   storages  = [ "128GB", "256GB", "512GB", "1TB" ]
@@ -161,6 +162,8 @@ def random_devices(count: 100)
     "Motorola" => 200..800,
     "ZTE"      => 150..600
   }
+
+
   default_range = 100..1000
 
   Device.delete_all
@@ -182,6 +185,7 @@ def random_devices(count: 100)
       phone_id:  phone_id,
       brand_id:  brand.id,
       type_id:   type_ids.sample,
+      category_id: categories_ids.sample,
       storage:   storages.sample,
       color:     colors.sample,
       price:     price_str,
