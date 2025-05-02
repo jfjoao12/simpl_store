@@ -116,7 +116,7 @@ a {
 
 /* ========== Container ========== */
 .container-mine-vert {
-  padding: 20px;
+
   margin: 0 auto;
   margin-bottom: 20px;
   max-width: fit-content;
@@ -148,7 +148,7 @@ a {
   max-width: 1500px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 1.25rem;
   padding: 1.25rem;
@@ -162,6 +162,17 @@ a {
   margin: 32px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   text-align: start;
+  transition: transform 0.3s ease;
+}
+
+.character-card-main {
+  background: #2b2b2b;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 350px;
+  margin: 32px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
   transition: transform 0.3s ease;
 }
 

@@ -6,8 +6,8 @@
   <div class="container-mine-vert">
     <div class="character-grid">
 
-      <% @featured.sample(5).each do |item| %>
-        <div class="character-card">
+      <% @featured.sample(6).each do |item| %>
+        <div class="character-card-main">
 
           <div class="character-info">
             <h2 class="character-name-h center">
@@ -19,12 +19,15 @@
                 <div class="profile-link">
                 </div>
           </div>
+          <div class="profile-link">
+            <%= link_to "View", device_path(item), class: "button is-link" %>
+          </div>
         </div>
       <% end %>
+
     </div>
 
-    <div class="profile-link">
-    </div>
+
   </div>
 </section>
 
