@@ -179,7 +179,6 @@ def random_devices(count: 100)
 
     # Pick a random price in that range:
     price_value = rand(range)
-    price_str   = "$#{'%.2f' % price_value}"
 
     Device.create!(
       phone_id:  phone_id,
@@ -188,12 +187,12 @@ def random_devices(count: 100)
       category_id: categories_ids.sample,
       storage:   storages.sample,
       color:     colors.sample,
-      price:     price_str,
+      price:     price_value,
       serial:    Array.new(15) { rand(0..9) }.join
     )
   end
 
-  puts "✅ Created #{Device.count} random devices"
+  puts "Created #{Device.count} random devices"
 end
 
 random_devices(count: 100)
