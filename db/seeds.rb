@@ -36,7 +36,7 @@ def import_brands
   end
 end
 
-# import_brands
+import_brands
 
 def import_phones
   Brand.all.each do |brand|
@@ -52,9 +52,9 @@ def import_phones
 
     phones = JSON.parse(response.body)['items'] || []
 
-
-
-      puts " Found #{phones.size} phones"
+      puts " -------------------------------- "
+      puts "Pulling phones from #{brand.name}"
+      puts "Found #{phones.size} phones"
 
       phones.each do |data|
         phone = Phone.find_or_initialize_by(id: data['id'])
@@ -131,6 +131,7 @@ def import_phones
 
         pp "#{phone.name} Saved!"
       end
+      puts "--------------------------------"
   end
 end
 
