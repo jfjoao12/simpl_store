@@ -1,6 +1,6 @@
 # app/admin/devices.rb
 ActiveAdmin.register Device do
-  permit_params :brand_id, :phone_id, :storage, :color, :price, :serial
+  permit_params :brand_id, :phone_id, :storage, :color, :price, :serial, :type
   filter :brand
   filter :phone
   filter :storage
@@ -24,6 +24,9 @@ ActiveAdmin.register Device do
       f.input :storage
       f.input :price
       f.input :serial
+      f.input :type,
+          collection: Type.order(:name).pluck(:name, :id),
+          prompt: "Select a device type…"
     end
 
     f.actions
