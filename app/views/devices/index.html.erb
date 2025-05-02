@@ -1,0 +1,88 @@
+
+
+
+<% current_page = (params[:page] || 1).to_i %>
+<% base_params  = { query: params[:query] } %>
+
+<% if @devices.any? %>
+
+<div class="search-container">
+
+  <%= form_with url: devices_path, method: :get, local: true, class: "search-form" do |f| %>
+    <%= f.select :category_id,
+          options_from_collection_for_select(@categories, :id, :name, @category_id),
+          include_blank: "All Categories",
+          class: "search-dropdown" %>
+
+    <%= f.text_field :query,
+          value: @query,
+          placeholder: "Search by device name…",
+          class: "search-bar" %>
+
+    <%= f.hidden_field :page, value: @page %>
+
+    <%= f.submit "Filter", class: "search-button" %>
+</div>
+
+<% end %>
+
+<section id="offers">
+<h2 class="title">All Phones</h2>
+  <div class="container-mine-vert">
+    <div class="character-grid">
+
+      <% @devices.each do |item| %>
+        <div class="character-card">
+
+          <div class="character-info">
+            <h2 class="character-name-h center">
+              <%= item.phone.name %>
+            </h2>
+            <p> <%= item.storage%> </p>
+            <p> <%= item.color %> </p>
+            <p> <%= item.price %> </p>
+                <div class="profile-link">
+                </div>
+          </div>
+            <div class="profile-link">
+            <%= link_to "View", device_path(item), class: "button is-link" %>
+
+            <% if session[:cart]&.include?(item.id) %>
+              <%= button_to "Remove", remove_from_cart_path(item), method: :delete, class: "button is-link" %>
+            <% else %>
+              <%= button_to "Add to Cart", add_to_cart_path(item), method: :post, class: "button is-link" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<% else %>
+  <div class="center" style="height: 750px;">
+    <h1>Oops!</h1>
+    <h2>No Results Found</h2>
+    <span class="subtle-info">
+      Try a different search term or check back later.
+    </span>
+  </div>
+<% end %>
+
+  <div class="pagination">
+    <% if current_page > 1 %>
+      <%= link_to "‹", devices_path(base_params.merge(page: current_page - 1)),
+                  class: "pagination-link" %>
+    <% else %>
+      <span class="pagination-disabled">‹</span>
+    <% end %>
+
+    <span class="pagination-current"><%= current_page %></span>
+
+    <% if @devices.size == @per_page %>
+      <%= link_to "›", devices_path(base_params.merge(page: current_page + 1)),
+                  class: "pagination-link" %>
+    <% else %>
+      <span class="pagination-disabled">›</span>
+    <% end %>
+  </div>

@@ -2,14 +2,15 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get "about/index"
-  get "device/:id", to: "device#show", as: :device
+  get "/devices",          to: "devices#index", as: :devices
+  get "device/:id", to: "devices#show", as: :device
 
-  resources :devices, only: [ :show ]
+  resources :devices, only: [ :show, :index ]
+  resource :cart, only: [ :show ], path: "/cart"
 
   get "up" => "rails/health#show", as: :rails_health_check
 
 
-  resource :cart, only: [ :show ], path: "/cart"
 
   # “Add a device to the cart”
   post   "/cart/:id", to: "carts#create",  as: :add_to_cart

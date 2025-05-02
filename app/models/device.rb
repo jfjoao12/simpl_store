@@ -3,6 +3,8 @@ class Device < ApplicationRecord
   belongs_to :brand
   has_many :phones
   belongs_to :type
+  belongs_to :category
+
 
 
   # Tell Ransack these are the only associations you want to be filterable
