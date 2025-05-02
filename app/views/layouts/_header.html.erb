@@ -1,11 +1,17 @@
-  <header>
-    <div class="container" style="display:flex; align-items:center; justify-content:space-between;">
-      <div class="logo">YourBrand</div>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">Shop</a>
-        <a href="#">Contact</a>
-        <a href="#">Cart</a>
-      </nav>
-    </div>
-  </header>
+<div id="navbar" role="navigation" aria-label="main navigation">
+  <%# <%= link_to "#", , class: "nav-link navbar-item" %>
+  <%#<%= link_to "#", , class: "nav-link navbar-item" %>
+  <%#<%= link_to "#", , class: "nav-link navbar-item" %>
+  <%#<%= link_to "#", , class: "nav-link navbar-item" %>
+  <%#<%= link_to "#", , class: "nav-link navbar-item" %>
+    <a href="#" class="nav-link navbar-item"> Placeholder </a>
+    <a href="#" class="nav-link navbar-item"> Placeholder </a>
+    <a href="#" class="nav-link navbar-item"> Placeholder </a>
+    <a href="#" class="nav-link navbar-item"> Placeholder </a>
+    <div class="nav-right">
+    <%#<%= form_with url: search_path, method: :get, local: true do %>
+      <input type="text" name="query" placeholder="Search..." value="<%= params[:query] %>" class="search-bar">
+      <button type="submit" class="search-button">Search</button>
+    <%# <% end %>
+  </div>
+</div>

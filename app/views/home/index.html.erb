@@ -1,6 +1,6 @@
 <!-- HOT OFFERS -->
 <section id="offers">
-<h2 class="title">Characters</h2>
+<h2 class="title">Offers</h2>
   <div class="container-mine-vert">
     <div class="character-grid">
 
@@ -44,9 +44,12 @@
             <h2 class="character-name-h center">
               <%= item.phone.name %>
             </h2>
-            <p> <%= item.storage%> </p>
-            <p> <%= item.color %> </p>
-            <p> <%= item.price %> </p>
+              <p class="subtle-info">storage: </p>
+              <p> <%= item.storage%> </p>
+              <p class="subtle-info">color: </p>
+              <p> <%= item.color %> </p>
+              <p class="subtle-info">price: </p>
+              <p> <%= item.price %> </p>
           </div>
             <div class="profile-link">
             </div>
@@ -60,7 +63,7 @@
 </section>
 
 <section id="New arrivals">
-<h2 class="title">Characters</h2>
+<h2 class="title">New arrivals</h2>
   <div class="container-mine-vert">
     <div class="character-grid">
 
