@@ -5,7 +5,15 @@ class Device < ApplicationRecord
   belongs_to :type
   belongs_to :category
 
+  belongs_to :phone
+  belongs_to :category
 
+  validates :phone_id, presence: true
+  validates :category_id, presence: true
+  validates :storage, presence: true, length: { maximum: 50 }
+  validates :color, presence: true
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :serial, presence: true
 
   # Tell Ransack these are the only associations you want to be filterable
   def self.ransackable_associations(auth_object = nil)
