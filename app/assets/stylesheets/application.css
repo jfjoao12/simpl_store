@@ -148,7 +148,7 @@ a {
   max-width: 1500px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 1.25rem;
   padding: 1.25rem;
@@ -158,9 +158,10 @@ a {
   background: #2b2b2b;
   border-radius: 12px;
   padding: 1rem;
-  width: 250px;
+  width: 350px;
+  margin: 32px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  text-align: center;
+  text-align: start;
   transition: transform 0.3s ease;
 }
 
@@ -176,9 +177,6 @@ a {
 }
 
 /* ========== Character Info ========== */
-.character-info {
-  padding: 0.75rem;
-}
 
 .character-name {
   font-size: 1.25rem;
@@ -228,10 +226,14 @@ a {
   color: #fff;
 }
 
+.character-info  {
+ padding: 20px;
+}
+
 .character-info p {
   font-size: 1rem;
-  color: #bbb;
-  margin-bottom: 0.5rem;
+  color: #ffffff;
+  margin: 16px;
 }
 
 /* Card Link */
