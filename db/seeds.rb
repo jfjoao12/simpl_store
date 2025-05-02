@@ -13,23 +13,32 @@ require 'net/http'
 # require 'phones_uri'
 require 'json'
 
-brands_uri = "https://mobile-devices-api1.p.rapidapi.com/brands?pageSize=totalItems"
-req = Net::HTTP::Get.new(brands_uri)
-req['X-Rapidapi-Key'] = '51bc23d70dmsh6429272287e5c73p18d54cjsn834e6269ba89'
-req['Accept']         = 'application/json'
 
-res = Net::HTTP.start(brands_uri.hostname, brands_uri.port, use_ssl: true) do |http|
-  http.request(req)
-end
+def import_brands
+  uri = "https://mobile-devices-api1.p.rapidapi.com/brands?pageSize=totalItems"
 
-brands_json = JSON.parse(res.body)['items'] || []
-
-brands_json.each do |brand|
-  Create.brand(
-    name: brand['name']
+  uri = HTTParty.get(
+    brands_uri,
+    headers: {
+      "X-Rapidapi-Key" => "51bc23d70dmsh6429272287e5c73p18d54cjsn834e6269ba89",  # or hard-code it directly
+      "Accept"         => "application/json"
+    }
   )
 
-  pp "#{brand["name"]} imported!"
+  json = JSON.parse(uri.body)['items'] || []
+
+  json.each do |brand|
+    Brand.create!(
+      name: brand['name']
+    )
+
+    pp "#{brand["name"]} imported!"
+  end
+end
+
+# import_brands
+
+def import_phones
 end
 
 
