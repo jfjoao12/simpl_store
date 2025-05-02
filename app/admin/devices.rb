@@ -34,7 +34,7 @@ ActiveAdmin.register Device do
 
   # Form
   form do |f|
-    f.semantic_errors *f.object.errors.keys
+       f.semantic_errors
 
     f.inputs "Device Details" do
       f.input :phone,
@@ -44,7 +44,7 @@ ActiveAdmin.register Device do
       f.input :storage
       f.input :color
       f.input :price
-      f.input :imei
+      f.input :serial
     end
 
     f.actions

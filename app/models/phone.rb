@@ -1,5 +1,6 @@
 class Phone < ApplicationRecord
   belongs_to :brand
+  has_many :devices, dependent: :destroy
   has_many :discounts, dependent: :destroy
 
   serialize :battery_charging, coder: YAML, type: Array
