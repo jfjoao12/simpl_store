@@ -1,5 +1,6 @@
 class Device < ApplicationRecord
   belongs_to :phone
+  belongs_to :brand
 
 
   # Tell Ransack these are the only associations you want to be filterable
@@ -10,6 +11,6 @@ class Device < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     # super returns the default set (id, created_at, etc),
     # so we just append any extra ones you need:
-    super + [ "phone_id", "storage", "color", "price", "imei" ]
+    super + [ "phone_id", "storage", "color", "price", "serial" ]
   end
 end

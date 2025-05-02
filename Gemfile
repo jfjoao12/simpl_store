@@ -21,8 +21,11 @@ gem "jbuilder"
 
 gem "faker"
 gem "rubocop"
+
 gem "activeadmin"
+gem "activeadmin_addons"
 gem "devise"
+
 gem "cssbundling-rails"
 gem "sass-rails"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]

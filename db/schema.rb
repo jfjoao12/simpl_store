@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_02_030208) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_02_031231) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -51,6 +51,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_02_030208) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "phone_id", null: false
+    t.integer "brand_id", null: false
+    t.index ["brand_id"], name: "index_devices_on_brand_id"
     t.index ["phone_id"], name: "index_devices_on_phone_id"
   end
 
@@ -125,6 +127,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_02_030208) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "devices", "brands"
   add_foreign_key "devices", "phones"
   add_foreign_key "discounts", "devices"
   add_foreign_key "phones", "brands"
