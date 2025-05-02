@@ -12,6 +12,7 @@ ActiveAdmin.register Device do
     f.inputs "Device Details" do
       f.input :phone_id,
         as: :nested_select,
+        url:    search_admin_phones_path,
         level_1: {
           attribute:  :brand_id,
           collection: Brand.order(:name).to_a   # <-- actual Brand instances

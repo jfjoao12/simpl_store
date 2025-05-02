@@ -1,0 +1,25 @@
+  <h2 class="title">Log In</h2>
+
+  <div class="search-container" style="background:#2b2b2b; padding:2rem; border-radius:8px;">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.email_field :email,
+            autofocus: true,
+            placeholder: "Email",
+            class: "search-bar",
+            style: "width:100%; margin-bottom:1rem;" %>
+
+      <%= f.password_field :password,
+            autocomplete: "current-password",
+            placeholder: "Password",
+            class: "search-bar",
+            style: "width:100%; margin-bottom:1.5rem;" %>
+
+      <%= f.submit "Log In",
+            class: "search-button",
+            style: "width:100%; padding:0.75rem; font-size:1.1rem;" %>
+    <% end %>
+  </div>
+
+  <div style="margin-top:1rem; text-align:center;">
+    <%= render "devise/shared/links" %>
+  </div>

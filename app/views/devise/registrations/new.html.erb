@@ -1,0 +1,81 @@
+<h2 class="title">Sign up</h2>
+
+<div class="search-container" style="background:#2b2b2b; padding:2rem; border-radius:8px;">
+  <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email,
+            autofocus: true,
+            class: "search-bar",
+            style: "width:100%; padding:0.75rem; font-size:1.1rem;",
+            autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password,
+            class: "search-bar",
+            style: "width:100%; padding:0.75rem; font-size:1.1rem;",
+            autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation,
+            class: "search-bar",
+            style: "width:100%; padding:0.75rem; font-size:1.1rem;",
+            autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :street %><br />
+      <%= f.text_field :street,
+            class: "search-bar",
+            style: "width:100%; padding:0.75rem; font-size:1.1rem;",
+            autocomplete: "new-street" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :city %><br />
+      <%= f.text_field :city,
+            class: "search-bar",
+            style: "width:100%; padding:0.75rem; font-size:1.1rem;",
+            autocomplete: "address-level2" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :state %><br />
+      <%= f.text_field :state,
+            class: "search-bar",
+            style: "width:100%; padding:0.75rem; font-size:1.1rem;",
+            autocomplete: "address-level1" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :zip %><br />
+      <%= f.text_field :zip,
+            class: "search-bar",
+            style: "width:100%; padding:0.75rem; font-size:1.1rem;",
+            autocomplete: "postal-code" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :country %><br />
+      <%= f.text_field :country,
+            class: "search-bar",
+            style: "width:100%; padding:0.75rem; font-size:1.1rem;",
+            autocomplete: "country" %>
+    </div>
+
+    <div class="actions is-button">
+      <%= f.submit "Sign up", class: "btn" %>
+    </div>
+  <% end %>
+</div>
+
+<%= render "devise/shared/links" %>

@@ -2,7 +2,7 @@ ActiveAdmin.register Phone do
   menu false
   permit_params :id, :name, :brand_id, :brand_name, :colors
 
-  collection_action :index, method: :get do
+  collection_action :search, method: :get do
     phones = Phone.ransack(
       name_cont:   params.dig(:q, :name_cont),
       brand_id_eq: params.dig(:q, :brand_id_eq)

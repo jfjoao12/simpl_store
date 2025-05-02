@@ -24,6 +24,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <% flash.each do |kind, msg| %>
+    <div class="flash <%= kind %>"><%= msg %></div>
+  <% end %>
   <body class="is-centered">
 
     <%= render "layouts/header" %>
