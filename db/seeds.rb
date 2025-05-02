@@ -36,7 +36,7 @@ def import_brands
   end
 end
 
-import_brands
+# import_brands
 
 def import_phones
   Brand.find_each do |brand|
@@ -59,7 +59,7 @@ def import_phones
     phones.each do |data|
       phone = Phone.find_or_initialize_by(external_id: data["id"])
       phone.external_id        = data["id"]
-      phone.brand_id           = brand.id
+      phone.brand_id           = brand["id"]
       phone.name               = data["name"]
       phone.brand_name         = data.dig("brand", "name")
 
@@ -148,7 +148,7 @@ def import_phones
 end
 
 
-# import_phones
+import_phones
 
 
 # # 1️⃣ Build the URI
