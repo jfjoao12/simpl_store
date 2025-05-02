@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_01_211009) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_01_211338) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -44,11 +44,33 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_01_211009) do
   end
 
   create_table "phones", force: :cascade do |t|
-    t.integer "external_id"
+    t.integer "brand_id", null: false
     t.string "name"
-    t.integer "brand_id"
+    t.string "brand_name"
+    t.string "battery_type"
+    t.text "battery_charging"
+    t.string "platform_os"
+    t.string "platform_chipset"
+    t.string "platform_cpu"
+    t.string "platform_gpu"
+    t.string "network_technology"
+    t.string "network_speed"
+    t.text "network_2g"
+    t.text "network_3g"
+    t.text "network_4g"
+    t.text "network_5g"
+    t.text "colors"
+    t.text "models"
+    t.text "cameras_main_camera_specs"
+    t.text "cameras_main_features"
+    t.text "cameras_main_video"
+    t.text "cameras_selfie_camera_specs"
+    t.text "cameras_selfie_features"
+    t.text "cameras_selfie_video"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["external_id"], name: "index_phones_on_external_id"
+    t.index ["brand_id"], name: "index_phones_on_brand_id"
   end
+
+  add_foreign_key "phones", "brands"
 end

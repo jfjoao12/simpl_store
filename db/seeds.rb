@@ -10,7 +10,7 @@
 # AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 require 'net/http'
-require 'phones_uri'
+# require 'phones_uri'
 require 'json'
 
 brands_uri = "https://mobile-devices-api1.p.rapidapi.com/brands?pageSize=totalItems"
@@ -24,7 +24,13 @@ end
 
 brands_json = JSON.parse(res.body)['items'] || []
 
+brands_json.each do |brand|
+  Create.brand(
+    name: brand['name']
+  )
 
+  pp "#{brand["name"]} imported!"
+end
 
 
 # # 1️⃣ Build the URI
@@ -45,4 +51,3 @@ brands_json = JSON.parse(res.body)['items'] || []
 #   puts "⚠️  RapidAPI fetch failed: #{res.code} #{res.message}"
 #   exit 1
 # end
-
