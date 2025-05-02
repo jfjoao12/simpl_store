@@ -1,10 +1,11 @@
 # app/admin/devices.rb
 ActiveAdmin.register Device do
-  permit_params :brand_id, :phone_id, :storage, :color, :price, :serial, :type
+  permit_params :brand_id, :phone_id, :storage, :color, :price, :serial, :type_id
   filter :brand
   filter :phone
   filter :storage
   filter :price
+  filter :type_id
 
   form do |f|
     f.semantic_errors
@@ -24,9 +25,10 @@ ActiveAdmin.register Device do
       f.input :storage
       f.input :price
       f.input :serial
-      f.input :type,
+      f.input :type_id,
+          as: :select,
           collection: Type.order(:name).pluck(:name, :id),
-          prompt: "Select a device type…"
+          prompt: "Select a type"
     end
 
     f.actions
