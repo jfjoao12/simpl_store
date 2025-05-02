@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_02_002752) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_02_010234) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -44,6 +44,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_02_002752) do
   end
 
   create_table "phones", force: :cascade do |t|
+    t.integer "external_id", null: false
     t.integer "brand_id", null: false
     t.string "name"
     t.string "brand_name"
@@ -59,17 +60,42 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_02_002752) do
     t.text "network_3g"
     t.text "network_4g"
     t.text "network_5g"
+    t.string "display_type"
+    t.string "display_size"
+    t.string "display_resolution"
+    t.string "display_protection"
+    t.date "launch_announced"
+    t.date "launch_released"
+    t.string "launch_status"
+    t.string "body_dimensions"
+    t.string "body_weight"
+    t.string "body_build"
+    t.string "body_sim"
+    t.string "memory_card_slot"
+    t.string "memory_internal"
+    t.string "sound_audio_jack"
+    t.string "sound_loudspeaker"
+    t.string "comms_wlan"
+    t.string "comms_bluetooth"
+    t.string "comms_positioning"
+    t.boolean "comms_nfc"
+    t.string "comms_radio"
+    t.string "comms_usb"
+    t.string "features_sensors"
     t.text "colors"
     t.text "models"
+    t.string "cameras_main_type"
     t.text "cameras_main_camera_specs"
     t.text "cameras_main_features"
     t.text "cameras_main_video"
+    t.string "cameras_selfie_type"
     t.text "cameras_selfie_camera_specs"
     t.text "cameras_selfie_features"
     t.text "cameras_selfie_video"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_phones_on_brand_id"
+    t.index ["external_id"], name: "index_phones_on_external_id", unique: true
   end
 
   add_foreign_key "phones", "brands"
