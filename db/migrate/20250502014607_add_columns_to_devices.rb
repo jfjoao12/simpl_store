@@ -3,10 +3,11 @@ class AddColumnsToDevices < ActiveRecord::Migration[8.0]
     drop_table :devices, if_exists: true
 
     create_table :devices do |t|
-      t.integer :phone_id
-      t.integer :storage_size
+      t.strinng :phone_id
+      t.string :storage
       t.string :color
-      t.string :serial_number
+      t.string :price
+      t.string :serial
       t.timestamps
     end
   end
