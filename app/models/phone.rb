@@ -17,13 +17,10 @@ class Phone < ApplicationRecord
   serialize :cameras_selfie_camera_specs, coder: YAML, type: Array
   serialize :cameras_selfie_features,     coder: YAML, type: Array
   serialize :cameras_selfie_video,        coder: YAML, type: Array
+  attr_accessor :colors
 
-  def self.colors
-    all.flat_map(&:colors).compact.uniq
-  end
 
   ransacker :colors_cont, formatter: proc { |v|
-  # returns a SQL fragment matching entries whose serialized text includes v
   "#{table_name}.colors LIKE '%#{v}%'"
   }, splat_param: true do |parent|
     parent.table[:colors]

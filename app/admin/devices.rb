@@ -1,12 +1,14 @@
 # app/admin/devices.rb
 ActiveAdmin.register Device do
-  permit_params :brand_id, :phone_id, :storage, :colors, :price, :imei
+  permit_params :brand_id, :phone_id, :storage, :color, :price, :serial
+  filter :brand
+  filter :phone
+  filter :storage
+  filter :price
 
   form do |f|
     f.semantic_errors
-
     f.inputs "Device Details" do
-      # RIGHT: pass full AR objects
       f.input :phone_id,
         as: :nested_select,
         level_1: {
@@ -16,12 +18,9 @@ ActiveAdmin.register Device do
         level_2: {
           attribute: :phone_id,
           collection: Phone.all
-        },
-        level_3: {
-          attribute: :colors,
-          collection:
         }
 
+      f.input :color, as: :string
       f.input :storage
       f.input :price
       f.input :serial

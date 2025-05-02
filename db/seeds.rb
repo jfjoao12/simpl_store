@@ -147,8 +147,8 @@ def import_phones
   end
 end
 
-
-# import_phones
+import_brands
+import_phones
 
 
 # # 1️⃣ Build the URI

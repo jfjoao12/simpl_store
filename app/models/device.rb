@@ -7,7 +7,6 @@ class Device < ApplicationRecord
   # Tell Ransack these are the only associations you want to be filterable
   def self.ransackable_associations(auth_object = nil)
     [ "phone" ]
-    [ "color" ]
   end
 
   def self.ransackable_attributes(auth_object = nil)
