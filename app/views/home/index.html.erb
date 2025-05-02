@@ -6,9 +6,6 @@
 
       <% @offers.each do |item| %>
         <div class="character-card">
-          <div class="character-image-container">
-
-          </div>
 
           <div class="character-info">
             <h2 class="character-name-h center">
@@ -17,77 +14,16 @@
             <p> <%= item.storage%> </p>
             <p> <%= item.color %> </p>
             <p> <%= item.price %> </p>
-          </div>
-            <div class="profile-link">
-            </div>
+                <div class="profile-link">
+                </div>
           </div>
         </div>
       <% end %>
     </div>
+
     <div class="profile-link">
     </div>
   </div>
 </section>
 
-<section id="featured">
-<h2 class="title">Featured</h2>
-  <div class="container-mine-vert">
-    <div class="character-grid">
 
-      <% @featured.each do |item| %>
-        <div class="character-card">
-          <div class="character-image-container">
-
-          </div>
-
-          <div class="character-info">
-            <h2 class="character-name-h center">
-              <%= item.phone.name %>
-            </h2>
-              <p class="subtle-info">storage: </p>
-              <p> <%= item.storage%> </p>
-              <p class="subtle-info">color: </p>
-              <p> <%= item.color %> </p>
-              <p class="subtle-info">price: </p>
-              <p> <%= item.price %> </p>
-          </div>
-            <div class="profile-link">
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="profile-link">
-    </div>
-  </div>
-</section>
-
-<section id="New arrivals">
-<h2 class="title">New arrivals</h2>
-  <div class="container-mine-vert">
-    <div class="character-grid">
-
-      <% @new_arrivals.each do |item| %>
-        <div class="character-card">
-          <div class="character-image-container">
-
-          </div>
-
-          <div class="character-info">
-            <h2 class="character-name-h center">
-              <%= item.phone.name %>
-            </h2>
-            <p> <%= item.storage%> </p>
-            <p> <%= item.color %> </p>
-            <p> <%= item.price %> </p>
-          </div>
-            <div class="profile-link">
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="profile-link">
-    </div>
-  </div>
-</section>

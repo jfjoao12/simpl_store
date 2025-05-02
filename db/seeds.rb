@@ -1,13 +1,13 @@
- # This file should ensure the existence of records required to run the application in every environment (production,
- # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
- # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
- #
- # Example:
- #
- #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
- #     MovieGenre.find_or_create_by!(name: genre_name)
- #   end
- AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+# This file should ensure the existence of records required to run the application in every environment (production,
+# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Example:
+#
+#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
+#     MovieGenre.find_or_create_by!(name: genre_name)
+#   end
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 require 'net/http'
 # require 'phones_uri'
@@ -147,25 +147,49 @@ def import_phones
   end
 end
 
-import_brands
-import_phones
 
+def random_devices(count: 100)
+  phone_ids = Phone.pluck(:id)
+  brand_ids = Brand.pluck(:id)
+  type_ids  = Type.pluck(:id)
 
-# # 1️⃣ Build the URI
-# phones_uri = URI("https://mobile-devices-api1.p.rapidapi.com/devices?brandId=66&pageSize=totalItems")
+  colors    = %w[Black Red Green White Yellow]
+  storages  = [ "128GB", "256GB", "512GB", "1TB" ]
+  price_ranges = {
+    "Samsung"  => 300..1200,
+    "Apple"    => 500..1600,
+    "Motorola" => 200..800,
+    "ZTE"      => 150..600
+  }
+  default_range = 100..1000
 
-# # 2️⃣ Prepare the GET request with headers
-# req = Net::HTTP::Get.new(phones_uri)
-# req['X-Rapidapi-Key'] = '51bc23d70dmsh6429272287e5c73p18d54cjsn834e6269ba89'
-# req['Accept']         = 'application/json'
+  Device.delete_all
 
-# # 3️⃣ Fire the HTTPS request
-# res = Net::HTTP.start(phones_uri.hostname, phones_uri.port, use_ssl: true) do |http|
-#   http.request(req)
-# end
+  count.times do
+    phone_id = phone_ids.sample
+    brand    = Brand.find(brand_ids.sample)
 
-# # 4️⃣ Error check & parse
-# unless res.is_a?(Net::HTTPSuccess)
-#   puts "⚠️  RapidAPI fetch failed: #{res.code} #{res.message}"
-#   exit 1
-# end
+    # Safely fetch the range, or fall back:
+    range = price_ranges[brand.name] || default_range
+    # Make sure range.begin <= range.end
+    range = default_range if range.begin > range.end
+
+    # Pick a random price in that range:
+    price_value = rand(range)
+    price_str   = "$#{'%.2f' % price_value}"
+
+    Device.create!(
+      phone_id:  phone_id,
+      brand_id:  brand.id,
+      type_id:   type_ids.sample,
+      storage:   storages.sample,
+      color:     colors.sample,
+      price:     price_str,
+      serial:    Array.new(15) { rand(0..9) }.join
+    )
+  end
+
+  puts "✅ Created #{Device.count} random devices"
+end
+
+random_devices(count: 100)

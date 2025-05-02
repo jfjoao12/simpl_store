@@ -120,7 +120,7 @@ a {
   margin: 0 auto;
   margin-bottom: 20px;
   max-width: fit-content;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: rgb(100, 100, 100);
   border-radius: 12px;
 }
