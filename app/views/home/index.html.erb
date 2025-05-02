@@ -22,6 +22,20 @@
           <div class="profile-link">
             <%= link_to "View", device_path(item), class: "button is-link" %>
           </div>
+
+          <div class="profile-link">
+            <%= button_to "Add to Cart",
+                  add_to_cart_path(item),
+                  method: :post,
+                  class: "button is-link" %>
+          </div>
+
+          <% if session[:cart]&.include?(item.id) %>
+          <%= button_to "Remove from Cart",
+                remove_from_cart_path(item),
+                method: :delete,
+                class: "button is-danger" %>
+          <% end %>
         </div>
       <% end %>
 

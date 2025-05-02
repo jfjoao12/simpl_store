@@ -588,3 +588,38 @@ p a:hover {
   font-size: 0.9rem;
   color: #aaa;
 }
+
+/* CART */
+.cart-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #58d68d;
+  color: #1e1e1e;
+  padding: 1rem 1.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  z-index: 1000;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.cart-button:hover {
+  background: #76e29a;
+  transform: translateY(-3px);
+}
+
+.cart-button sup {
+  display: inline-block;
+  background: #1e1e1e;
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 1;
+  padding: 0.3em 0.6em;
+  border-radius: 50%;
+  margin-left: 0.6em;
+}
