@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  device: one
+  discounted_percentage: 1
+  discounted_price: 9.99
+  active: false
+
+two:
+  device: two
+  discounted_percentage: 1
+  discounted_price: 9.99
+  active: false
